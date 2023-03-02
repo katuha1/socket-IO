@@ -17,3 +17,5 @@
 9. Вы можете объявить одни и те же функцию, класс, интерфейс и определить константу в отдельных пространствах имен, не получая фатальных ошибок. По своей сути, пространство имен не более чем иерархически маркированные блоки кода содержащие обычный PHP код.
 
 https://docs.google.com/document/d/1YqciwhHh9MuEvX9r6AEKDACOLPJUul7DHU2drwzkMOo/edit
+
+https://docs.google.com/document/d/1YqciwhHh9MuEvX9r6AEKDACOLPJUul7DHU2drwzkMOo/edit#heading=h.sap9la24haf7
