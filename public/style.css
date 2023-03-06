@@ -1,87 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito';
+}
+
 body {
-  background-color: rgb(255, 255, 255);
-  margin: 0 auto;
-  background-size: cover;
-  width: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-image: url("images/background.jpg");
 }
 
-#form {
-  margin: 0 auto;
-  margin-bottom: 10px;
-  background-size: cover;
-  width: 900px;
-  background: rgba(0, 0, 0, 0.15);
-  padding: 0.25rem;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  height: 3rem;
-  box-sizing: border-box;
-  backdrop-filter: blur(10px);
-  border-radius: 3px;
+a {
+    color: #000;
+    text-align: center;
+    text-decoration: none;
 }
-#input {
-  border: none;
-  padding: 0 1rem;
-  flex-grow: 1;
-  border-radius: 2rem;
-  margin: 0.25rem;
+/* Стиль для размытия фона при открытии модального окна */
+.blur-element {
+    filter: blur(5px);
 }
-#input:focus {
-  outline: none;
+/* Стиль для выравнивания по центру */
+.aligncenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-#form > button {
-  background: rgb(203, 98, 255);
-  border: none;
-  padding: 0 1rem;
-  margin: 0.25rem;
-  border-radius: 3px;
-  outline: none;
-  color: #fff;
+/* Основной контейнер */
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    backdrop-filter: blur(5px);
+
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+/* Шапка сайта */
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5em 1.5em;
+    border-radius: 0 0 1em 1em;
+    background: #e0e0e0;
+    box-shadow:  20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+/* Лого */
+.header .logo {
+    display: inline-flex;
+    align-items: center;
+}
+/* Изображение лого */
+.header img {
+    width: 4em;
+    height: 4em;
+}
+/* Наименование лого */
+.header .logoname {
+    margin-left: 0.5em;
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 2px 7px 6px rgba(0,0,0,0.3), 
+    0px -4px 10px rgba(255,255,255,0.3);
+}
+/* Список с ссылками */
+.header ul {
+    display: inline-flex;
+    list-style-type: none;
+}
+.header ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1em;
+}
+/* У последнего элемента списка выставляем больший отступ */
+.header ul li:nth-last-child(1) {
+    margin-left: 4em;
+}
+/* Основное окно с сообщениями */
+.chat-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-#messages {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-#messages > li {
-  padding: 0.5rem 1rem;
-  margin-top: 10px;
-  border-radius: 3px;
-  background-color: #e8e8e8;
+.chat-box::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
-#messages > li:nth-child(odd) {
-  background: #e1cffa;
+.chat-box .message {
+    display: flex;
+    padding: 0.5em 1em;
+}
+
+.chat-box .message div {
+    min-width: 120px;
+    max-width: 80%;
+    padding: 4px 8px;
+    /* background-color: #fff; */
+    border-radius: 10px;
+    padding: 4px 8px;
+}
+
+.chat-box .message.me-message {
+    justify-content: flex-end;
+}
+
+.chat-box .message.other-message {
+    justify-content: flex-start;
+}
+
+.chat-box .message .name {
+    width: 100%;
+    color: #777;
+    font-size: 0.8em;
+}
+
+.chat-box .message .text {
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.chat-box .update {
+    text-align: center;
+    padding: 0.5em;
+    font-style: italic;
+}
+
+/* Стили для нижнего меню с кнопками и текстовым полем */
+.chat_input-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0.8em;
+}
+/* Общий стиль для кнопок */
+.chat_input-box .chat-btn {
+    width: 8%;
+    max-width: 30px;
+    aspect-ratio: 1/1;
+    border: 0;
+    margin: 0 2px;
+    background-color: transparent;
+}
+/* Растягиваем svg на ширину всей кнопки */
+.chat_input-box .chat-btn svg {
+    width: 100%;
+    height: 100%;
+}
+/* Стиль для текстового поля с сообщением */
+.chat_input-box textarea {
+    display: flex;
+    border: 1px solid #eee;
+    width: 80%;
+    height: 80%;
+    padding: 8px 10px;
+    margin: 0 4px;
+    border-radius: 20px;
+    font-size: 1em;
+    outline: 0;
+    resize: none;
+    overflow: hidden;
+}
+
+/* Раскрытие меню смайлов */
+/* Лучше наверно сделать через js */
+.chat_input-box #smile-btn:active {}
+
+/* Окно для автоизации */
+.join-screen {
+    display: block;
+    position: absolute;
+    width: 90%;
+    max-width: 600px;
+    padding: 1em;
+    border: 1px solid;
+    border-radius: 5px;
+    z-index: 999;
+    overflow: hidden;
+    background-color: #eee;
+}
+/* Линия под заголовком */
+.join-screen h1 {
+    border-bottom: 2px solid #fdfff5;
+}
+/* Стиль для поля */
+.join-screen input[type=text] {
+    float: left;
+    outline: 0;
+    border: 2px solid #fdfff5;
+    width: 70%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 1em;
+}
+/* Стиль для кнопки JOIN */
+.join-screen #join-chat-btn {
+    float: right;
+    outline: 0;
+    border: 2px solid #fdfff5;
+    width: 20%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 1em;
+    font-weight: bold;
+    overflow: hidden;
 }
 
 
-.butt {
-  text-decoration: none;
-}
-
-nav {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 40px;
-  background-color: rgb(203, 98, 255);
-  border-radius: 3px;
-  margin-top: 8px;
-}
-
-.menu {
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  transition: 0.3s ease-in;
-}
-
-.menu:hover {
-  color:rgb(83, 0, 124);
+@media screen and (max-width: 800px) {
+    .header ul {
+        display: none;
+    }
 }
 
 .smile {
@@ -94,12 +241,12 @@ nav {
 
 .smiles {
     bottom: 0;
-    height: 60px;
+    height: 30px;
     left: 0;
     outline: none;
     padding-left: 10px;
     position: absolute;
     right: 0;
-    bottom: 30px;
+    bottom: 60px;
     width: 100%;
 }
