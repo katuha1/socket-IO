@@ -9,8 +9,6 @@
   "author": "katuhagr",
   "license": "ISC",
   "dependencies": {
-    "emoji-js": "^3.7.0",
-    "emoji-tree": "^1.1.2",
     "express": "^4.18.2",
     "socket.io": "^4.6.1"
   }
